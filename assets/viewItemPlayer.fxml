@@ -8,7 +8,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="71.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerItemPlayer">
    <children>
-      <ImageView fx:id="imagen" fitHeight="62.0" fitWidth="80.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="326.0" AnchorPane.topAnchor="5.0" />
       <Label fx:id="nombrePlayer" layoutX="94.0" layoutY="9.0" prefHeight="21.0" prefWidth="218.0" text="Nom jugador">
          <font>
             <Font size="15.0" />
@@ -16,6 +15,6 @@
       </Label>
       <Label fx:id="punts" layoutX="94.0" layoutY="36.0" prefHeight="17.0" prefWidth="218.0" text="Punts" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="101.0" AnchorPane.topAnchor="36.0" />
       <Button fx:id="botonOcultar" layoutX="340.0" layoutY="24.0" mnemonicParsing="false" onAction="#ocultarJugador" text="Ocultar" />
-      <ImageView fitHeight="53.0" fitWidth="60.0" layoutX="17.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagen" fitHeight="53.0" fitWidth="60.0" layoutX="17.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

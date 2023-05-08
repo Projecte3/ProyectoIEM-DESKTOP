@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
@@ -26,10 +27,11 @@ public class ControllerItemPlayer {
     @FXML
     private void ocultarJugador() {
         JSONObject obj = new JSONObject("{}");
-        obj.put("ip", ip);
+        obj.put("ip", "/" + ip);
         UtilsHTTP.sendPOST(Main.protocol + "://" + Main.host + "/ocultar_jugador", obj.toString(),
                 (response) -> {
-
+                    ControllerPlayers ctrlPlayer = (ControllerPlayers) UtilsViews.getController("ViewPlayers");
+                    ctrlPlayer.loadPlayers();
                 });
     }
 
@@ -47,6 +49,10 @@ public class ControllerItemPlayer {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public void setImagen(Image imagen) {
+        this.imagen.setImage(imagen);
     }
 
 }

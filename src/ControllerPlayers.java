@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 
 public class ControllerPlayers {
@@ -26,6 +27,11 @@ public class ControllerPlayers {
     @FXML
     private VBox listaPlayers;
 
+    @FXML
+    private void actualizarLista() {
+        loadPlayers();
+    }
+
     public void loadPlayers() {
         JSONObject obj = new JSONObject("{}");
         UtilsHTTP.sendPOST(Main.protocol + "://" + Main.host + "/get_ranking_all", obj.toString(),
@@ -36,6 +42,7 @@ public class ControllerPlayers {
 
     private void loadPlayersCallback(String response) {
         showLoading();
+        listaPlayers.getChildren().clear();
         JSONObject objResponse = new JSONObject(response);
         if (objResponse.getString("status").equals("OK")) {
             JSONArray JSONlist = objResponse.getJSONArray("result");
@@ -52,6 +59,16 @@ public class ControllerPlayers {
                     itemController.setNombrePlayer(player.getString("nom_jugador"));
                     itemController.setPunts(String.valueOf(player.getFloat("puntuacio")));
                     itemController.setIp(player.getString("ip_origen"));
+
+                    Image imagen;
+
+                    if (player.getInt("ocult") == 0) {
+                        imagen = new Image("file:./assets/visible.png");
+                    } else {
+                        imagen = new Image("file:./assets/no_visible.png");
+                    }
+
+                    itemController.setImagen(imagen);
 
                     // Add template to the list
                     listaPlayers.getChildren().add(itemTemplate);
